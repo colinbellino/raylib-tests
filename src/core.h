@@ -5,13 +5,45 @@
 
 #include "core_utils.h"
 
+#define SNAKE_LENGTH 256
+#define SQUARE_SIZE 10
+
+typedef struct Snake
+{
+    Vector2 position;
+    Vector2 size;
+    Vector2 speed;
+    Color color;
+} Snake;
+
+typedef struct Food
+{
+    Vector2 position;
+    Vector2 size;
+    bool active;
+    Color color;
+} Food;
+
 typedef struct
 {
-    int isInitialized;
+    int initialized;
+    int windowOpened;
     int windowWidth;
     int windowHeight;
     char *windowTitle;
-    Color color;
+
+    int framesCounter;
+    bool gameOver;
+    bool pause;
+
+    Food fruit;
+    Snake snake[SNAKE_LENGTH];
+    Vector2 snakePosition[SNAKE_LENGTH];
+    bool allowMove;
+    Vector2 offset;
+    int counterTail;
+
+    int reloadedThisFrame;
     int reloadCount;
 } CoreMemory;
 

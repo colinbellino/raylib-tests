@@ -93,6 +93,7 @@ int main(void)
     int running = 1;
     time_t lastReload = time(0);
     CoreMemory memory = {0};
+    memory.reloadedThisFrame = 1;
     MacGameCore core = loadCore();
 
     while (running != 0)
@@ -115,7 +116,10 @@ int main(void)
             }
             else
             {
-                memory.isInitialized = -1;
+                memory.reloadedThisFrame = 1;
+                memory.reloadCount += 1;
+
+                memory.fruit.color = (memory.reloadCount % 2) ? GREEN : RED;
             }
         }
     }
