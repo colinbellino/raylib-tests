@@ -19,13 +19,13 @@ typedef struct
     void *handle;
     CoreUpdate *update;
     bool isValid;
-} MacGameCore;
+} MacCoreCode;
 
-MacGameCore loadCore()
+MacCoreCode loadCore()
 {
     print("Loading core...\n");
 
-    MacGameCore result = {0};
+    MacCoreCode result = {0};
 
     result.handle = dlopen(coreLibPath, RTLD_LAZY);
     if (!result.handle)
@@ -76,7 +76,7 @@ bool codeChanged(time_t lastReload)
     return false;
 }
 
-void unloadCore(MacGameCore *core)
+void unloadCore(MacCoreCode *core)
 {
     if (core->handle)
     {
@@ -94,7 +94,7 @@ int main(void)
     time_t lastReload = time(0);
     CoreMemory memory = {0};
     memory.reloadedThisFrame = 1;
-    MacGameCore core = loadCore();
+    MacCoreCode core = loadCore();
 
     while (running != 0)
     {

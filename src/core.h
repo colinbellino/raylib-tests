@@ -27,15 +27,16 @@ typedef struct Food
 typedef struct
 {
     int initialized;
+
     int windowOpened;
     int windowWidth;
     int windowHeight;
     char *windowTitle;
 
+    Color color;
     int framesCounter;
     bool gameOver;
     bool pause;
-
     Food fruit;
     Snake snake[SNAKE_LENGTH];
     Vector2 snakePosition[SNAKE_LENGTH];

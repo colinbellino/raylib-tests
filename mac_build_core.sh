@@ -11,4 +11,3 @@ gcc ./src/core.c -o ./build/core.o \
     -framework OpenGL \
     lib/libraylib.a \
     -dynamiclib
-# echo "=================================";

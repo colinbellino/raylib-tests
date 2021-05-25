@@ -1,5 +1,3 @@
-#include <raylib.h>
-
 #include "core.h"
 
 void ResetState(CoreMemory *memory)
@@ -9,7 +7,7 @@ void ResetState(CoreMemory *memory)
     memory->pause = false;
 
     memory->fruit = (Food){0};
-    memory->fruit.color = BLUE;
+    memory->fruit.color = memory->color;
 
     memory->counterTail = 1;
     memory->allowMove = false;
@@ -51,7 +49,6 @@ extern CORE_UPDATE(coreUpdate)
         memory->windowHeight = 450;
         memory->windowTitle = "Game";
         memory->initialized = 1;
-        memory->fruit.color = BLUE;
 
         ResetState(memory);
     }
